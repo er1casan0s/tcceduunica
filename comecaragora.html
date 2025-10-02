@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - EduÚnica</title>
+    <link rel="icon" type="image/png" href="imagens/quebra-cabeca.png">
+
+    <!-- Inclusão de ícones do Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="comecaragora.css">
+</head>
+<body>
+    <!-- Cabeçalho simplificado -->
+    <header class="simple-header">
+    <div class="container">
+        <div class="header-content-right">
+            <div>
+                <!-- LOGO ICONE -->
+                <h1 class="logo"><i class="fas fa-brain"></i> EduÚnica</h1>
+                <p class="slogan">Porque cada mente merece uma educação sob medida</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <main class="container">
+        <section class="registration-section">
+            <div class="registration-container">
+                <h2 class="section-title"><i class="fas fa-user-plus"></i> Cadastro</h2>
+                <p class="form-description">Crie sua conta para acessar jogos personalizados e acompanhar seu progresso no diário de bordo.</p>
+                
+                <form class="registration-form" id="registrationForm">
+                    <!-- Informações Pessoais -->
+                    <div class="form-group">
+                        <label for="name">Nome Completo</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="name" name="name" 
+                                   pattern="[A-Za-zÀ-ÿ\s]{2,}\s+[A-Za-zÀ-ÿ\s]{2,}" 
+                                   title="Digite pelo menos nome e sobrenome" 
+                                   required>
+                        </div>
+                        <small class="validation-message">Digite pelo menos nome e sobrenome</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="birthdate">Data de Nascimento</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                            <input type="date" id="birthdate" name="birthdate" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Telefone</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-phone"></i>
+                        <input type="tel" id="phone" name="phone" 
+                            placeholder="(00) 00000-0000"
+                            maxlength="15"
+                            oninput="this.value = this.value.replace(/\D/g, '').slice(0, 11)"
+                            required>
+                                </div>
+                        <small class="validation-message">Formato: (00) 00000-0000</small>
+                    </div>
+                    
+                    <!-- Informações de Acesso -->
+                    <div class="form-group">
+                        <label for="username">Nome de Usuário</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-user-tag"></i>
+                            <input type="text" id="username" name="username" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Senha (8 dígitos numéricos)</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password" name="password" 
+                                pattern="\d{8}"
+                                title="Digite exatamente 8 dígitos numéricos"
+                                maxlength="8"
+                                oninput="this.value = this.value.replace(/\D/g, '')"
+                                required>
+                        </div>
+                        <small class="validation-message">A senha deve conter exatamente 8 dígitos numéricos</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirm-password">Confirmar Senha</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="confirm-password" name="confirm-password" 
+                                   pattern="\d{8}"
+                                   title="Digite exatamente 8 dígitos numéricos"
+                                   maxlength="8"
+                                   required>
+                        </div>
+                    </div>
+                    
+                    <!-- Resto do formulário permanece igual -->
+                    <div class="form-group">
+                        <label for="user-type">Tipo de Usuário</label>
+                        <select id="user-type" name="user-type" required>
+                            <option value="" disabled selected>Selecione uma opção</option>
+                            <option value="student">Estudante</option>
+                            <option value="parent">Responsável</option>
+                            <option value="educator">Educador</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Informações de Neurodiversidade -->
+                    <div class="form-group full-width">
+                        <label>Perfil de Neurodiversidade (opcional)</label>
+                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">Estas informações nos ajudarão a personalizar sua experiência de aprendizado.</p>
+                        
+                        <div class="neurodiversity-options">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="autism" name="neurodiversity[]" value="autism">
+                                <label for="autism">Autismo</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="adhd" name="neurodiversity[]" value="adhd">
+                                <label for="adhd">TDAH</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="dyslexia" name="neurodiversity[]" value="dyslexia">
+                                <label for="dyslexia">Dislexia</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="dyscalculia" name="neurodiversity[]" value="dyscalculia">
+                                <label for="dyscalculia">Discalculia</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="dysgraphia" name="neurodiversity[]" value="dysgraphia">
+                                <label for="dysgraphia">Disgrafia</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="other" name="neurodiversity[]" value="other">
+                                <label for="other">Outro</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="preferences">Preferências e Necessidades Específicas</label>
+                        <textarea id="preferences" name="preferences" placeholder="Conte-nos sobre suas preferências de aprendizado, sensibilidades sensoriais ou outras informações que possam nos ajudar a personalizar sua experiência."></textarea>
+                    </div>
+                    
+                    <!-- Termos e Condições -->
+                    <div class="form-group full-width">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">Li e concordo com os <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a>.</label>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <label for="newsletter">Desejo receber novidades e atualizações por e-mail.</label>
+                        </div>
+                    </div>
+                    
+                    <!-- Botão de Envio -->
+                    <div class="form-group full-width">
+                        <button type="submit" class="submit-button"><i class="fas fa-user-plus"></i> Criar Conta</button>
+                    </div>
+                </form>
+                
+                <div class="form-footer">
+                    <p>Já tem uma conta? <a href="login.html">Faça login aqui</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé do site com informações de contato e links úteis -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <!-- Coluna 1: Sobre o projeto -->
+                <div class="footer-column">
+                    <h3>Sobre o EduÚnica</h3>
+                    <p>Projeto de TCC que visa promover inclusão através de jogos educativos para pessoas neurodivergentes de todas as idades, com diário de bordo para acompanhamento personalizado.</p>
+                    <div class="social-icons">
+                        <a href="home.html" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="home.html" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="home.html" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/erica-santos-851b75191/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Coluna 2: Links rápidos -->
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-gamepad"></i> Jogos Educativos</a></li>
+                        <li><a href="diario.html"><i class="fas fa-book-open"></i> Diário de Bordo</a></li>
+                        <li><a href="home.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                        <li><a href="home.html"><i class="fas fa-hands-helping"></i> Suporte</a></li>
+                        <li><a href="home.html"><i class="fas fa-shield-alt"></i> Política de Privacidade</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Coluna 3: Contato -->
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i> erica.santos.lima15@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> (84) 98192-1744</li>
+                        <li><i class="fas fa-map-marker-alt"></i> UNIFAEL</li>
+                        <li><i class="fas fa-globe"></i> Erica Lima dos Santos - RA: 47518433</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Direitos autorais -->
+            <div class="copyright">
+                <p>&copy; 2025 EduÚnica - Todos os direitos reservados | Projeto de TCC</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script para carregar os ícones do Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <script src="comecaragora.js"></script>
+</body>
+</html>

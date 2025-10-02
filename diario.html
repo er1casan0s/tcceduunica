@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="imagens/quebra-cabeca.png">
+
+    <link rel="stylesheet" href="diario.css">
+    <title>EduÚnica: Meu Diário</title>
+
+      <!-- Inclusão de ícones do Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   
+</head>
+<body>
+     <!-- Imagem de fundo da tela inicial (oculta, apenas para referência) 
+    <div class="background-image-container">
+        <img class="background-image" src="https://assets-persist.lovart.ai/agent_images/f9504d1f-2540-4eba-946a-a4836d297776.jpg" alt="Tela inicial do EduÚnica">
+    </div>-->
+
+    <!-- Cabeçalho do site com logo e navegação -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div>
+                    <!-- Logo com ícone -->
+                    <h1 class="logo"><i class="fas fa-brain"></i> EduÚnica</h1>
+                    <p class="slogan">Porque cada mente merece uma educação sob medida</p>
+                </div>
+            </div>
+            <!-- Menu de navegação principal com ícones -->
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="home.html"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="index.html"><i class="fas fa-gamepad"></i> Jogos</a></li>
+                    <li><a href="diario.html"><i class="fas fa-book-open"></i> Diário de Bordo</a></li>
+                    <li><a href="perfil.html"><i class="fas fa-user"></i> Perfil</a></li>
+                    <li><a href="sobre.html"><i class="fas fa-info-circle"></i> Sobre Nós</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Seção principal do diário -->
+        <section class="journal-container">
+            <!-- Cabeçalho do diário -->
+            <div class="journal-header">
+                <h3><i class="fas fa-book-open"></i> Meu Diário de Bordo</h3>
+                <!-- Botão para adicionar nova entrada no diário -->
+                <button class="btn-add-entry" id="btnAddEntry">
+                    <i class="fas fa-plus"></i> Nova Entrada
+                </button>
+            </div>
+
+            <!-- Calendário para visualização e interação -->
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                    <h4 id="currentMonth">Setembro 2025</h4>
+                    <button id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="calendar" id="calendar">
+                    <!-- Dias da semana -->
+                    <div class="calendar-day-name">Dom</div>
+                    <div class="calendar-day-name">Seg</div>
+                    <div class="calendar-day-name">Ter</div>
+                    <div class="calendar-day-name">Qua</div>
+                    <div class="calendar-day-name">Qui</div>
+                    <div class="calendar-day-name">Sex</div>
+                    <div class="calendar-day-name">Sáb</div>
+                    
+                    <!-- Dias do mês serão gerados dinamicamente pelo JavaScript -->
+                </div>
+            </div>
+
+            <!-- Modal para adicionar entrada no diário -->
+            <div class="modal" id="entryModal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Adicionar Entrada no Diário</h4>
+                        <span class="close">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <form id="entryForm">
+                            <div class="form-group">
+                                <label for="entryDate">Data:</label>
+                                <input type="date" id="entryDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="entryType">Tipo:</label>
+                                <select id="entryType" required>
+                                    <option value="conquista">Conquista</option>
+                                    <option value="atividade">Atividade</option>
+                                    <option value="nota">Nota Pessoal</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="entryTitle">Título:</label>
+                                <input type="text" id="entryTitle" placeholder="Título da entrada" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="entryDescription">Descrição:</label>
+                                <textarea id="entryDescription" placeholder="Descreva sua atividade ou conquista" rows="4" required></textarea>
+                            </div>
+                            <div class="form-group" id="medalSelection" style="display: none;">
+                                <label>Medalha:</label>
+                                <div class="medal-options">
+                                    <input type="radio" id="medalGold" name="medal" value="gold">
+                                    <label for="medalGold"><i class="fas fa-medal gold"></i> Ouro</label>
+                                    
+                                    <input type="radio" id="medalSilver" name="medal" value="silver">
+                                    <label for="medalSilver"><i class="fas fa-medal silver"></i> Prata</label>
+                                    
+                                    <input type="radio" id="medalBronze" name="medal" value="bronze">
+                                    <label for="medalBronze"><i class="fas fa-medal bronze"></i> Bronze</label>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn-save">Salvar</button>
+                                <button type="button" class="btn-cancel">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção de conquistas desbloqueadas -->
+            <div class="section-title">
+                <h3><i class="fas fa-trophy"></i> Conquistas Desbloqueadas</h3>
+            </div>
+            <div class="achievements-container">
+                <!-- Conquista 1 -->
+                <div class="achievement">
+                    <div class="achievement-icon">
+                        <i class="fas fa-medal gold"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <div class="achievement-title">
+                            <h4>Memória Sensorial</h4>
+                            <span class="achievement-date"><i class="fas fa-calendar"></i> 06/09/2025</span>
+                        </div>
+                        <p>Completei todos os níveis do jogo de memória sensorial. Consegui melhorar meu tempo de resposta em 30%!</p>
+                    </div>
+                </div>
+                
+                <!-- Conquista 2 -->
+                <div class="achievement">
+                    <div class="achievement-icon">
+                        <i class="fas fa-medal silver"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <div class="achievement-title">
+                            <h4>Comunicação Visual</h4>
+                            <span class="achievement-date"><i class="fas fa-calendar"></i> 10/09/2025</span>
+                        </div>
+                        <p>Consegui identificar 15 de 20 expressões faciais corretamente no jogo de comunicação visual.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção de atividades pendentes -->
+            <div class="section-title">
+                <h3><i class="fas fa-tasks"></i> Atividades Pendentes</h3>
+            </div>
+            <div class="activities-container">
+                <!-- Atividade 1 -->
+                <div class="activity">
+                    <div class="activity-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="activity-content">
+                        <div class="activity-title">
+                            <h4>Exercícios de Comunicação Visual</h4>
+                            <span class="activity-date"><i class="fas fa-calendar"></i> 08/09/2025</span>
+                        </div>
+                        <p>Praticar os exercícios de comunicação visual por pelo menos 20 minutos.</p>
+                        <div class="activity-actions">
+                            <button class="btn-complete">Marcar como Concluída</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Atividade 2 -->
+                <div class="activity">
+                    <div class="activity-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="activity-content">
+                        <div class="activity-title">
+                            <h4>Jogo de Memória</h4>
+                            <span class="activity-date"><i class="fas fa-calendar"></i> 12/09/2025</span>
+                        </div>
+                        <p>Completar o nível 3 do jogo de memória sensorial.</p>
+                        <div class="activity-actions">
+                            <button class="btn-complete">Marcar como Concluída</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+
+   <!-- Rodapé do site com informações de contato e links úteis -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <!-- Coluna 1: Sobre o projeto -->
+                <div class="footer-column">
+                    <h3>Sobre o EduÚnica</h3>
+                    <p>Projeto de TCC que visa promover inclusão através de jogos educativos para pessoas neurodivergentes de todas as idades, com diário de bordo para acompanhamento personalizado.</p>
+                    <div class="social-icons">
+                        <a href="home.html" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="home.html" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="home.html" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/erica-santos-851b75191/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Coluna 2: Links rápidos -->
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-gamepad"></i> Jogos Educativos</a></li>
+                        <li><a href="diario.html"><i class="fas fa-book-open"></i> Diário de Bordo</a></li>
+                        <li><a href="home.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                        <li><a href="home.html"><i class="fas fa-hands-helping"></i> Suporte</a></li>
+                        <li><a href="home.html"><i class="fas fa-shield-alt"></i> Política de Privacidade</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Coluna 3: Contato -->
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i> erica.santos.lima15@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> (84) 98192-1744</li>
+                        <li><i class="fas fa-map-marker-alt"></i> UNIFAEL</li>
+                        <li><i class="fas fa-globe"></i> Erica Lima dos Santos - RA: 47518433</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Direitos autorais -->
+            <div class="copyright">
+                <p>&copy; 2025 EduÚnica - Todos os direitos reservados | Projeto de TCC</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script para carregar os ícones do Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+
+    <!--JS DO DIARIO-->
+    <script src="diario.js"></script>
+</body>
+
+</html>

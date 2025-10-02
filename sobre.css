@@ -1,0 +1,322 @@
+ /* Reset CSS para garantir consistência entre navegadores */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Estilos gerais da página */
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Container principal para limitar a largura do conteúdo */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+ 
+         /* Estilos do cabeçalho */
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Estilo do logo */
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #ffffff, #e0e0ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: #ffffff;
+        } Estilo do slogan */
+        .slogan {
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-top: 5px;
+            color: #e0e0ff;
+        }
+
+        /* Estilos da navegação MENU */
+        nav {
+            background-color: #ffffff;
+            border-radius: 30px;
+            padding: 10px 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            color: #6a11cb;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links li a i {
+            margin-right: 8px;
+        }
+
+        .nav-links li a:hover {
+            background-color: #f0f0ff;
+            color: #2575fc;
+        }
+        /* Estilo para o rodapé */
+         footer {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background-color: white;
+            margin-top: 10px;
+        }
+
+        .footer-column p {
+            color: #e0e0ff;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #e0e0ff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-column ul li a i,
+        .contact-info li i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            color: #e0e0ff;
+        }
+
+        /* ===== ESTILOS ESPECÍFICOS PARA A PÁGINA SOBRE NÓS ===== */
+
+/* Seção de título principal */
+.sobre-titulo {
+    text-align: center;
+    margin: 40px 0 30px;
+}
+
+.sobre-subtitulo {
+    font-size: 1.2rem;
+    color: #6a11cb; /* Cor roxa do tema */
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+/* Container principal para cada seção de conteúdo */
+.sobre-secao {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f7ff 100%); /* Degradê branco suave */
+    border-radius: 20px;
+    padding: 40px;
+    margin: 30px 0;
+    box-shadow: 0 6px 15px rgba(106, 17, 203, 0.1); /* Sombra suave roxa */
+    border: 1px solid #f0e6ff; /* Borda sutil */
+}
+
+/* Layout flexível para conteúdo e imagem lado a lado */
+.sobre-conteudo {
+    display: flex;
+    align-items: center; /* Alinha verticalmente ao centro */
+    justify-content: space-between; /* Distribui espaço entre texto e imagem */
+    gap: 40px; /* Espaço entre texto e imagem */
+    min-height: 400px; /* Altura mínima para manter proporção */
+}
+
+/* Inverte a ordem para seções alternadas (imagem esquerda/texto direita) */
+.sobre-secao-reverse .sobre-conteudo {
+    flex-direction: row-reverse; /* Inverte a ordem dos elementos */
+}
+
+/* Estilo do texto - ocupa 50% do espaço */
+.sobre-texto {
+    flex: 1; /* Ocupa 1 parte do espaço disponível */
+    color: #6a11cb; /* Cor roxa lilás do texto */
+    line-height: 1.8;
+    min-width: 300px; /* Largura mínima para o texto */
+}
+
+.sobre-texto h3 {
+    color: #6a11cb; /* Cor do título */
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sobre-texto h3 i {
+    color: #2575fc; /* Azul para contrastar */
+}
+
+.sobre-texto p {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.sobre-texto strong {
+    color: #2575fc; /* Destaque em azul */
+    font-weight: 600;
+}
+
+/* Estilo das experiências profissionais */
+.experiencia-item {
+    background: rgba(255, 255, 255, 0.7); /* Fundo branco semi-transparente */
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    border-left: 4px solid #6a11cb; /* Borda lateral roxa */
+}
+
+.experiencia-item h4 {
+    color: #6a11cb;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+}
+
+.experiencia-item h4 i {
+    color: #2575fc;
+}
+
+/* ===== CORREÇÃO DAS IMAGENS ===== */
+/* Estilo da imagem - ocupa espaço proporcional */
+.sobre-imagem {
+    flex: 1; 
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+}
+
+/* CONTROLE CORRIGIDO DO TAMANHO DAS IMAGENS */
+.sobre-imagem img {
+    width: 100%;          /* Ocupa toda a largura do container */
+    max-width: 350px;     /* Limite máximo para não esticar demais */
+    height: auto;         /* Mantém proporção da imagem */
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(106, 17, 203, 0.3);
+    border: 3px solid #e0d6ff;
+    transition: transform 0.3s ease;
+}
+
+/* Efeito de zoom suave ao passar o mouse */
+.sobre-imagem img:hover {
+    transform: scale(1.05);
+}
+
+/* Legenda da imagem */
+.imagem-legenda {
+    margin-top: 15px;
+    font-style: italic;
+    color: #6a11cb;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+    .sobre-conteudo {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+        min-height: auto;
+    }
+    
+    .sobre-secao-reverse .sobre-conteudo {
+        flex-direction: column;
+    }
+    
+    .sobre-texto, .sobre-imagem {
+        flex: none;
+        width: 100%;
+        min-width: auto;
+    }
+    
+    /* Ajuste das imagens para mobile */
+    .sobre-imagem img {
+        max-width: 280px;   /* Imagem menor em mobile */
+        height: auto;       /* Mantém proporção */
+    }
+}

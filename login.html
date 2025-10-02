@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon" type="image/png" href="imagens/quebra-cabeca.png">
+
+    <link rel="stylesheet" href="login.css">
+    <title>Login : EduÚnica</title>
+
+      <!-- Inclusão de ícones do Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   
+</head>
+<body>
+ <!-- Imagem de fundo da tela inicial (oculta, apenas para referência) 
+    <div class="background-image-container">
+        <img class="background-image" src="https://assets-persist.lovart.ai/agent_images/f9504d1f-2540-4eba-946a-a4836d297776.jpg" alt="Tela inicial do EduÚnica">
+    </div>-->
+     <!-- Cabeçalho do site com logo e navegação 
+        <header>
+            <div class="container">
+                <div class="header-content">
+                    <div>
+         Logo com ícone -->
+                    <h1 class="logo"><i class="fas fa-brain"></i> EduÚnica</h1>
+                    <p class="slogan">Porque cada mente merece uma educação sob medida</p>
+                </div>
+            </div>
+        Menu de navegação principal com ícones -->
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="home.html"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="index.html"><i class="fas fa-gamepad"></i> Jogos</a></li>
+                    <li><a href="diario.html"><i class="fas fa-book-open"></i> Diário de Bordo</a></li>
+                    <li><a href="perfil.html"><i class="fas fa-user"></i> Perfil</a></li>
+                    <li><a href="sobre.html"><i class="fas fa-info-circle"></i> Sobre Nós</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>-->
+            <!-- Seção de Login -->
+        <section class="login-section">
+            <div class="container">
+                <div class="login-container">
+                    <div class="login-welcome">
+                        <div class="welcome-content">
+                            <i class="fas fa-brain welcome-icon"></i>
+                            <h2>Bem-vindo ao EduÚnica!</h2>
+                            <p>Acesse sua conta para continuar sua jornada de aprendizado personalizado na EduÚnica.</p>
+                            <!-- CARROSSEL DE IMAGENS -->
+                        <div class="carrossel-container">
+                            <!-- Container principal com todas as imagens -->
+                            <div class="carrossel">
+                                <!-- Slide 1 - Primeira imagem -->
+                                <div class="slide">
+                                    <img src="imagens/imagem3.jpg" alt="Progresso educacional">
+                                </div>
+                                <!-- Slide 2 - Segunda imagem -->
+                                <div class="slide">
+                                    <img src="imagens/imagem4.jpg" alt="Jogos educativos">
+                                </div>
+                                <!-- Slide 3 - Terceira imagem -->
+                                <div class="slide">
+                                    <img src="imagens/imagem2.jpg" alt="Aprendizado personalizado">
+                                </div>
+                            </div>
+                            
+                            <!-- Indicadores visuais (bolinhas) -->
+                            <div class="indicadores">
+                                <div class="indicador" data-slide="0"></div>
+                                <div class="indicador" data-slide="1"></div>
+                                <div class="indicador" data-slide="2"></div>
+                            </div>
+                        </div>
+                        <!-- FIM DO CARROSSEL -->
+
+                        </div>
+                    </div>
+                    <div class="login-form-container">
+                        <div class="login-form">
+                            <h2>Acesse sua conta</h2>
+                            <form action="#" method="post">
+                                <div class="form-group">
+                                    <label for="email">E-mail ou usuário</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-user"></i>
+                                        <input type="text" id="email" name="email" placeholder="Digite seu e-mail ou usuário" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Senha</label>
+                                    <div class="input-with-icon">
+                                        <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+                                    </div>
+                                </div>
+                                <div class="form-options">
+                                    <div class="remember-me">
+                                        <input type="checkbox" id="remember" name="remember">
+                                        <label for="remember">Lembrar-me</label>
+                                    </div>
+                                    <a href="home.html" class="forgot-password">Esqueci minha senha</a>
+                                </div>
+                                <button type="submit" class="btn-login">Entrar</button>
+                                <div class="separator">
+                                    <span>ou</span>
+                                </div>
+                                <button type="button" class="btn-google">
+                                    <i class="fab fa-google"></i> Entrar com Google
+                                </button>
+                                <div class="create-account">
+                                    <p>Não tem uma conta? <a href="comecaragora.html">Criar conta</a></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+<!-- Rodapé do site com informações de contato e links úteis -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <!-- Coluna 1: Sobre o projeto -->
+                <div class="footer-column">
+                    <h3>Sobre o EduÚnica</h3>
+                    <p>Projeto de TCC que visa promover inclusão através de jogos educativos para pessoas neurodivergentes de todas as idades, com diário de bordo para acompanhamento personalizado.</p>
+                    <div class="social-icons">
+                        <a href="home.html" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="home.html" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="home.html" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/erica-santos-851b75191/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Coluna 2: Links rápidos -->
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-gamepad"></i> Jogos Educativos</a></li>
+                        <li><a href="diario.html"><i class="fas fa-book-open"></i> Diário de Bordo</a></li>
+                        <li><a href="home.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                        <li><a href="home.html"><i class="fas fa-hands-helping"></i> Suporte</a></li>
+                        <li><a href="home.html"><i class="fas fa-shield-alt"></i> Política de Privacidade</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Coluna 3: Contato -->
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i> erica.santos.lima15@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> (84) 98192-1744</li>
+                        <li><i class="fas fa-map-marker-alt"></i> UNIFAEL</li>
+                        <li><i class="fas fa-globe"></i> Erica Lima dos Santos - RA: 47518433</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Direitos autorais -->
+            <div class="copyright">
+                <p>&copy; 2025 EduÚnica - Todos os direitos reservados | Projeto de TCC</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script para carregar os ícones do Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+
+</body>
+
+</html>
