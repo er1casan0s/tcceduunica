@@ -1,0 +1,1059 @@
+/* ===== VARIÁVEIS PARA ALTO CONTRASTE ===== */
+:root {
+    --primary-color: #6a11cb;
+    --secondary-color: #2575fc;
+    --text-color: #333333;
+    --background-color: #ffffff;
+    --contrast-ratio: 4.5; /* WCAG AA */
+}
+/* ===== CONTROLES DE ACESSIBILIDADE ===== */
+.accessibility-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    padding: 15px;
+    border: 2px solid var(--primary-color);
+}
+
+.accessibility-toggle {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.accessibility-toggle:hover,
+.accessibility-toggle:focus {
+    background: var(--secondary-color);
+    transform: scale(1.1);
+    outline: none;
+}
+
+.accessibility-panel {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    padding: 20px;
+    min-width: 250px;
+    border: 2px solid var(--primary-color);
+}
+
+.accessibility-panel.show {
+    display: block;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.accessibility-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.accessibility-option input {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+.accessibility-option label {
+    margin: 0;
+    cursor: pointer;
+    font-weight: normal;
+    flex: 1;
+}
+
+.reset-btn {
+    width: 100%;
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 0.3s ease;
+}
+
+.reset-btn:hover {
+    background: #5a6268;
+}
+
+/* Modo alto contraste para controles */
+.high-contrast .accessibility-controls {
+    border-color: #000000;
+    background: #FFFFFF;
+}
+
+.high-contrast .accessibility-panel {
+    border-color: #000000;
+    background: #FFFFFF;
+}
+
+.high-contrast .accessibility-toggle {
+    background: #000000;
+    color: #FFFFFF;
+}
+
+/* Reduzir movimento para controles */
+.reduce-motion .accessibility-panel {
+    animation: none;
+}
+
+.reduce-motion .accessibility-toggle {
+    transition: none;
+}
+
+/* SKIP LINK */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #000000;
+    color: #ffffff;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 0 0 4px 4px;
+    z-index: 10000;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Elemento oculto para leitores de tela */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .accessibility-controls {
+        top: 10px;
+        right: 10px;
+        padding: 10px;
+    }
+    
+    .accessibility-toggle {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+    
+    .accessibility-panel {
+        right: -20px;
+        min-width: 220px;
+    }
+}
+/* ===== MODOS DE ACESSIBILIDADE ===== */
+/* Modo Alto Contraste */
+.high-contrast {
+    --primary-color: #000000;
+    --secondary-color: #0000FF;
+    --text-color: #000000;
+    --background-color: #FFFFFF;
+    --contrast-ratio: 21; /* Máximo contraste */
+}
+
+.high-contrast body {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+}
+
+.high-contrast header,
+.high-contrast footer {
+    background: #000000 !important;
+    color: #FFFFFF !important;
+}
+
+.high-contrast .logo {
+    background: linear-gradient(to right, #FFFFFF, #FFFF00) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+}
+
+/* Modo Daltonismo (Protanopia) */
+.colorblind-friendly {
+    filter: url('#protanopia');
+}
+
+/* Texto Maior */
+.large-text {
+    font-size: 1.2em !important;
+}
+
+.large-text h1 { font-size: 2.8rem !important; }
+.large-text h2 { font-size: 2.2rem !important; }
+.large-text h3 { font-size: 1.8rem !important; }
+.large-text p, 
+.large-text li, 
+.large-text span { 
+    font-size: 1.3rem !important; 
+    line-height: 1.8 !important;
+}
+
+/* ===== ESTILOS GERAIS DE ACESSIBILIDADE ===== */
+/* Foco visível melhorado */
+*:focus {
+    outline: 3px solid var(--primary-color) !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.3) !important;
+}
+
+/* Remove outline apenas para interações de mouse, mantém para teclado */
+body:not(.user-is-tabbing) *:focus {
+    outline: none !important;
+}
+
+/* Links com melhor contraste */
+a {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+a:hover,
+a:focus {
+    color: var(--secondary-color);
+    text-decoration: none;
+    background-color: rgba(106, 17, 203, 0.1);
+}
+
+/* Botões acessíveis */
+button {
+    min-height: 44px; /* Tamanho mínimo para toque */
+    min-width: 44px;
+}
+
+button:focus {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+/* Formulários acessíveis */
+input, select, textarea {
+    font-size: 16px; /* Previne zoom no iOS */
+    padding: 12px;
+    border: 2px solid #ccc;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--primary-color);
+    background-color: #f8f9ff;
+}
+
+/* Labels obrigatórios */
+label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.required::after {
+    content: " *";
+    color: #e74c3c;
+}
+
+/* ===== SKIP LINKS ===== */
+/* Links para pular para conteúdo principal (útil para leitores de tela) */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #000000;
+    color: #ffffff;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 0 0 4px 4px;
+    z-index: 10000;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* ===== CONTROLES DE ACESSIBILIDADE ===== */
+.accessibility-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    padding: 15px;
+    border: 2px solid var(--primary-color);
+}
+
+.accessibility-toggle {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.accessibility-toggle:hover,
+.accessibility-toggle:focus {
+    background: var(--secondary-color);
+    transform: scale(1.1);
+}
+
+.accessibility-panel {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    padding: 20px;
+    min-width: 250px;
+}
+
+.accessibility-panel.show {
+    display: block;
+}
+
+.accessibility-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.accessibility-option input {
+    margin-right: 10px;
+}
+
+.accessibility-option label {
+    margin: 0;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+/* ===== ANIMAÇÕES CONTROLADAS ===== */
+/* Permite usuários desativarem animações */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+.reduce-motion * {
+    animation: none !important;
+    transition: none !important;
+}
+
+/* ===== ESTILOS PARA LEITORES DE TELA ===== */
+/* Elementos visualmente ocultos, mas disponíveis para leitores de tela */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ===== CONTRASTE DE TEXTO ===== */
+/* Garante contraste adequado para todo o texto */
+body {
+    color: var(--text-color);
+    background-color: var(--background-color);
+    line-height: 1.6;
+}
+
+/* Texto com contraste reforçado */
+.high-contrast-text {
+    color: #000000;
+    background-color: #FFFFFF;
+    padding: 2px 4px;
+}
+
+/* ===== NAVEGAÇÃO POR TECLADO ===== */
+/* Indicador visual para elemento ativo */
+.current-page {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+}
+
+/* ===== FORMULÁRIOS ACESSÍVEIS ===== */
+/* Mensagens de erro e sucesso */
+.error-message {
+    color: #d32f2f;
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: block;
+}
+
+.success-message {
+    color: #388e3c;
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Grupos de formulário */
+.fieldset {
+    border: 2px solid #ddd;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.legend {
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+/* ===== RESPONSIVIDADE ACESSÍVEL ===== */
+@media (max-width: 768px) {
+    .accessibility-controls {
+        top: 10px;
+        right: 10px;
+    }
+    
+    .accessibility-panel {
+        right: -50px;
+    }
+    
+    /* Tamanhos mínimos de toque para mobile */
+    button, 
+    .nav-links li a {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 12px;
+    }
+}
+
+/* ===== IMPRESSÃO ===== */
+@media print {
+    .accessibility-controls,
+    .skip-link {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+        font-size: 12pt !important;
+        line-height: 1.4 !important;
+    }
+    
+    a::after {
+        content: " (" attr(href) ")";
+    }
+}
+
+/* Reset CSS para garantir consistência entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Estilos gerais da página */
+body {
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Container principal para limitar a largura do conteúdo */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Estilos do cabeçalho */
+header {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    padding: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilo do logo */
+.logo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(to right, #ffffff, #e0e0ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+}
+
+.logo i {
+    margin-right: 10px;
+    color: #ffffff;
+}
+
+/* Estilo do slogan */
+.slogan {
+    font-size: 1.1rem;
+    font-weight: 300;
+    margin-top: 5px;
+    color: #e0e0ff;
+}
+
+/* Estilos da navegação MENU */
+nav {
+    background-color: #ffffff;
+    border-radius: 30px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+}
+
+.nav-links li a {
+    color: #6a11cb;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links li a i {
+    margin-right: 8px;
+}
+
+.nav-links li a:hover {
+    background-color: #f0f0ff;
+    color: #2575fc;
+}
+
+/* Estilos da seção de diário de bordo */
+.journal-container {
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+.journal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.journal-header h3 {
+    color: #6a11cb;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.journal-header h3 i {
+    margin-right: 10px;
+}
+
+/* Botão para adicionar nova entrada */
+.btn-add-entry {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.btn-add-entry i {
+    margin-right: 8px;
+}
+
+.btn-add-entry:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(106, 17, 203, 0.3);
+}
+
+/* Estilos do calendário */
+.calendar-container {
+    margin-bottom: 30px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.calendar-header h4 {
+    color: #6a11cb;
+    font-size: 1.2rem;
+}
+
+.calendar-header button {
+    background: none;
+    border: none;
+    color: #6a11cb;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.calendar-header button:hover {
+    background-color: #e0e0ff;
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.calendar-day-name {
+    text-align: center;
+    font-weight: 600;
+    color: #6a11cb;
+    padding: 10px 0;
+}
+
+.calendar-day {
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f5f7fa;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.calendar-day:hover {
+    background-color: #e0e0ff;
+}
+
+.calendar-day.empty {
+    background-color: transparent;
+    cursor: default;
+}
+
+.calendar-day.today {
+    background-color: #6a11cb;
+    color: white;
+}
+
+.calendar-day.has-entries {
+    background-color: #e0e0ff;
+    position: relative;
+}
+
+.calendar-day.has-entries::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #6a11cb;
+}
+
+/* Estilos do modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 0;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: modalFadeIn 0.3s;
+}
+
+@keyframes modalFadeIn {
+    from {opacity: 0; transform: translateY(-50px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.modal-header h4 {
+    color: #6a11cb;
+    margin: 0;
+}
+
+.close {
+    color: #aaa;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #6a11cb;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+/* Estilos do formulário */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #6a11cb;
+    outline: none;
+}
+
+.medal-options {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.medal-options input[type="radio"] {
+    display: none;
+}
+
+.medal-options label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.medal-options input[type="radio"]:checked + label {
+    background-color: #e0e0ff;
+    border-color: #6a11cb;
+}
+
+.medal-options i {
+    margin-right: 5px;
+    font-size: 1.2rem;
+}
+
+.medal-options .gold {
+    color: #ffd700;
+}
+
+.medal-options .silver {
+    color: #c0c0c0;
+}
+
+.medal-options .bronze {
+    color: #cd7f32;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-save {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-save:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(106, 17, 203, 0.3);
+}
+
+.btn-cancel {
+    background-color: #f5f7fa;
+    color: #555;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-cancel:hover {
+    background-color: #e0e0e0;
+}
+
+/* Estilos das seções */
+.section-title {
+    margin: 30px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.section-title h3 {
+    color: #6a11cb;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+}
+
+.section-title h3 i {
+    margin-right: 10px;
+}
+
+/* Estilos das conquistas */
+.achievements-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.achievement {
+    display: flex;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.achievement:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.achievement-icon {
+    margin-right: 15px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.achievement-icon i {
+    font-size: 2rem;
+}
+
+.achievement-content {
+    flex: 1;
+}
+
+.achievement-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.achievement-title h4 {
+    color: #6a11cb;
+    margin: 0;
+}
+
+.achievement-date {
+    color: #999;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+}
+
+.achievement-date i {
+    margin-right: 5px;
+}
+
+/* Estilos das atividades pendentes */
+.activities-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.activity {
+    display: flex;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2
+}
+/* Estilo para o rodapé */
+         footer {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background-color: white;
+            margin-top: 10px;
+        }
+
+        .footer-column p {
+            color: #e0e0ff;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #e0e0ff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-column ul li a i,
+        .contact-info li i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            color: #e0e0ff;
+        }

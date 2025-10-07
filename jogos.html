@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="imagens/quebra-cabeca.png">
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/npm/emoji-datasource-apple/img/apple/64/1f9e9.png">
+    <meta name="description" content="EduÚnica - Plataforma educacional inclusiva para pessoas neurodivergentes com jogos adaptados">
+    <meta name="keywords" content="educação inclusiva, neurodiversidade, autismo, TDAH, jogos educativos, acessibilidade">
+    
+    <title>EduÚnica: Jogos Educativos</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="jogos.css">
+</head>
+<body>
+    <!-- Controles de Acessibilidade -->
+    <div class="accessibility-controls">
+        <button class="accessibility-toggle" onclick="toggleAccessibilityPanel()">
+            <i class="fas fa-universal-access"></i>
+        </button>
+        <div class="accessibility-panel" id="accessibilityPanel">
+            <!-- Painel de acessibilidade -->
+             <div class="accessibility-panel" id="accessibilityPanel">
+    <div class="accessibility-option">
+        <input type="checkbox" id="highContrast" onchange="toggleHighContrast()">
+        <label for="highContrast">Alto Contraste</label>
+    </div>
+    <div class="accessibility-option">
+        <input type="checkbox" id="largeText" onchange="toggleLargeText()">
+        <label for="largeText">Texto Maior</label>
+    </div>
+    <div class="accessibility-option">
+        <input type="checkbox" id="reduceMotion" onchange="toggleReduceMotion()">
+        <label for="reduceMotion">Reduzir Movimento</label>
+    </div>
+    <button class="reset-btn" onclick="resetAccessibility()">
+        <i class="fas fa-undo"></i> Redefinir
+    </button>
+</div>
+        </div>
+    </div>
+
+    <a href="#main-content" class="skip-link">Pular para conteúdo principal</a>
+
+    <!-- Cabeçalho -->
+    <header role="banner">
+        <div class="container">
+            <div class="header-content">
+                <div>
+                    <h1 class="logo"><i class="fas fa-brain"></i> EduÚnica</h1>
+                    <p class="slogan">Porque cada mente merece uma educação sob medida</p>
+                </div>
+            </div>
+            <nav role="navigation">
+                <ul class="nav-links">
+                    <li><a href="home.html"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="jogos.html" class="current-page"><i class="fas fa-gamepad"></i> Jogos</a></li>
+                    <li><a href="diario.html"><i class="fas fa-book-open"></i> Diário</a></li>
+                    <li><a href="perfil.html"><i class="fas fa-user"></i> Perfil</a></li>
+                    <li><a href="sobre.html"><i class="fas fa-info-circle"></i> Sobre</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container" id="main-content">
+        <!-- Seção de Jogos -->
+        <section class="games-section">
+            <h2 class="section-title"><i class="fas fa-gamepad"></i> Jogos Educativos</h2>
+            
+            <!-- Filtros por Categoria -->
+            <div class="games-categories">
+                <button class="category-btn active" data-category="all">
+                    <i class="fas fa-th"></i> Todos
+                </button>
+                <button class="category-btn" data-category="memory">
+                    <i class="fas fa-brain"></i> Memória
+                </button>
+                <button class="category-btn" data-category="logic">
+                    <i class="fas fa-puzzle-piece"></i> Lógica
+                </button>
+                <button class="category-btn" data-category="math">
+                    <i class="fas fa-calculator"></i> Matemática
+                </button>
+                <button class="category-btn" data-category="language">
+                    <i class="fas fa-language"></i> Linguagem
+                </button>
+                <button class="category-btn" data-category="sensory">
+                    <i class="fas fa-hand-sparkles"></i> Sensorial
+                </button>
+            </div>
+
+            <!-- Grade de Jogos -->
+            <div class="games-grid" id="gamesGrid">
+                <!-- Jogo 1 -->
+                <div class="game-widget" data-category="memory">
+                    <div class="game-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="game-title">Memória Visual</h3>
+                    <p class="game-description">Encontre pares de cartas correspondentes para treinar memória e concentração.</p>
+                    <div class="game-difficulty">
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot"></div>
+                        <div class="difficulty-dot"></div>
+                    </div>
+                    <button class="play-btn" onclick="loadGame('memory')">
+                        <i class="fas fa-play"></i> Jogar
+                    </button>
+                </div>
+
+                <!-- Jogo 2 -->
+                <div class="game-widget" data-category="logic">
+                    <div class="game-icon">
+                        <i class="fas fa-sort-numeric-up"></i>
+                    </div>
+                    <h3 class="game-title">Quebra-Cabeça Numérico</h3>
+                    <p class="game-description">Organize números em ordem sequencial desenvolvendo raciocínio lógico.</p>
+                    <div class="game-difficulty">
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot"></div>
+                    </div>
+                    <button class="play-btn" onclick="loadGame('puzzle')">
+                        <i class="fas fa-play"></i> Jogar
+                    </button>
+                </div>
+
+                <!-- Jogo 3 -->
+                <div class="game-widget" data-category="sensory">
+                    <div class="game-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="game-title">Classificação por Cores</h3>
+                    <p class="game-description">Organize objetos por cores para desenvolver discriminação visual.</p>
+                    <div class="game-difficulty">
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot"></div>
+                        <div class="difficulty-dot"></div>
+                    </div>
+                    <button class="play-btn" onclick="loadGame('sorting')">
+                        <i class="fas fa-play"></i> Jogar
+                    </button>
+                </div>
+
+                <!-- Jogo 4 -->
+                <div class="game-widget" data-category="language">
+                    <div class="game-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <h3 class="game-title">Correspondência de Palavras</h3>
+                    <p class="game-description">Combine palavras com imagens para expandir vocabulário.</p>
+                    <div class="game-difficulty">
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot"></div>
+                    </div>
+                    <button class="play-btn" onclick="loadGame('matching')">
+                        <i class="fas fa-play"></i> Jogar
+                    </button>
+                </div>
+
+                <!-- Jogo 5 -->
+                <div class="game-widget" data-category="math">
+                    <div class="game-icon">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <h3 class="game-title">Soma Rápida</h3>
+                    <p class="game-description">Resolva operações de adição simples de forma divertida e educativa.</p>
+                    <div class="game-difficulty">
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot"></div>
+                        <div class="difficulty-dot"></div>
+                    </div>
+                    <button class="play-btn" onclick="loadGame('addition')">
+                        <i class="fas fa-play"></i> Jogar
+                    </button>
+                </div>
+
+                <!-- Jogo 6 -->
+                <div class="game-widget" data-category="logic">
+                    <div class="game-icon">
+                        <i class="fas fa-shapes"></i>
+                    </div>
+                    <h3 class="game-title">Identificação de Formas</h3>
+                    <p class="game-description">Reconheça e classifique diferentes formas geométricas.</p>
+                    <div class="game-difficulty">
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot"></div>
+                        <div class="difficulty-dot"></div>
+                    </div>
+                    <button class="play-btn" onclick="loadGame('shapes')">
+                        <i class="fas fa-play"></i> Jogar
+                    </button>
+                </div>
+
+                <!-- Jogo 7 -->
+                <div class="game-widget" data-category="memory">
+                    <div class="game-icon">
+                        <i class="fas fa-memory"></i>
+                    </div>
+                    <h3 class="game-title">Sequência de Sons</h3>
+                    <p class="game-description">Repita sequências sonoras para treinar memória auditiva.</p>
+                    <div class="game-difficulty">
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot"></div>
+                    </div>
+                    <button class="play-btn" onclick="loadGame('sounds')">
+                        <i class="fas fa-play"></i> Jogar
+                    </button>
+                </div>
+
+                <!-- Jogo 8 -->
+                <div class="game-widget" data-category="language">
+                    <div class="game-icon">
+                        <i class="fas fa-spell-check"></i>
+                    </div>
+                    <h3 class="game-title">Formação de Palavras</h3>
+                    <p class="game-description">Monte palavras a partir de sílabas para praticar ortografia.</p>
+                    <div class="game-difficulty">
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot"></div>
+                    </div>
+                    <button class="play-btn" onclick="loadGame('wordbuilder')">
+                        <i class="fas fa-play"></i> Jogar
+                    </button>
+                </div>
+
+                <!-- Jogo 9 -->
+                <div class="game-widget" data-category="math">
+                    <div class="game-icon">
+                        <i class="fas fa-equals"></i>
+                    </div>
+                    <h3 class="game-title">Igual ou Diferente</h3>
+                    <p class="game-description">Identifique se conjuntos de objetos são iguais ou diferentes.</p>
+                    <div class="game-difficulty">
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot"></div>
+                        <div class="difficulty-dot"></div>
+                    </div>
+                    <button class="play-btn" onclick="loadGame('compare')">
+                        <i class="fas fa-play"></i> Jogar
+                    </button>
+                </div>
+
+                <!-- Jogo 10 -->
+                <div class="game-widget" data-category="sensory">
+                    <div class="game-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3 class="game-title">Ritmo Musical</h3>
+                    <p class="game-description">Siga padrões rítmicos para desenvolver coordenação e senso musical.</p>
+                    <div class="game-difficulty">
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot"></div>
+                    </div>
+                    <button class="play-btn" onclick="loadGame('rhythm')">
+                        <i class="fas fa-play"></i> Jogar
+                    </button>
+                </div>
+
+                <!-- Jogo 11 -->
+                <div class="game-widget" data-category="logic">
+                    <div class="game-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3 class="game-title">Padrões e Sequências</h3>
+                    <p class="game-description">Complete sequências lógicas identificando padrões visuais.</p>
+                    <div class="game-difficulty">
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot active"></div>
+                    </div>
+                    <button class="play-btn" onclick="loadGame('patterns')">
+                        <i class="fas fa-play"></i> Jogar
+                    </button>
+                </div>
+
+                <!-- Jogo 12 -->
+                <div class="game-widget" data-category="memory">
+                    <div class="game-icon">
+                        <i class="fas fa-chess-board"></i>
+                    </div>
+                    <h3 class="game-title">Memória de Posições</h3>
+                    <p class="game-description">Memorize a localização de objetos em uma grade.</p>
+                    <div class="game-difficulty">
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot"></div>
+                    </div>
+                    <button class="play-btn" onclick="loadGame('position')">
+                        <i class="fas fa-play"></i> Jogar
+                    </button>
+                </div>
+
+                <!-- Jogo 13 -->
+                <div class="game-widget" data-category="math">
+                    <div class="game-icon">
+                        <i class="fas fa-sort-amount-up"></i>
+                    </div>
+                    <h3 class="game-title">Ordenação Numérica</h3>
+                    <p class="game-description">Organize números em ordem crescente ou decrescente.</p>
+                    <div class="game-difficulty">
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot"></div>
+                    </div>
+                    <button class="play-btn" onclick="loadGame('ordering')">
+                        <i class="fas fa-play"></i> Jogar
+                    </button>
+                </div>
+
+                <!-- Jogo 14 -->
+                <div class="game-widget" data-category="language">
+                    <div class="game-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="game-title">Letras Iniciais</h3>
+                    <p class="game-description">Identifique a letra inicial de diferentes palavras e objetos.</p>
+                    <div class="game-difficulty">
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot"></div>
+                        <div class="difficulty-dot"></div>
+                    </div>
+                    <button class="play-btn" onclick="loadGame('letters')">
+                        <i class="fas fa-play"></i> Jogar
+                    </button>
+                </div>
+
+                <!-- Jogo 15 -->
+                <div class="game-widget" data-category="sensory">
+                    <div class="game-icon">
+                        <i class="fas fa-feather"></i>
+                    </div>
+                    <h3 class="game-title">Discriminação Tátil</h3>
+                    <p class="game-description">Identifique texturas e materiais através de descrições visuais.</p>
+                    <div class="game-difficulty">
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot"></div>
+                        <div class="difficulty-dot"></div>
+                    </div>
+                    <button class="play-btn" onclick="loadGame('textures')">
+                        <i class="fas fa-play"></i> Jogar
+                    </button>
+                </div>
+
+                <!-- Jogo 16 -->
+                <div class="game-widget" data-category="logic">
+                    <div class="game-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3 class="game-title">Quebra-Cabeça de Imagens</h3>
+                    <p class="game-description">Monte quebra-cabeças com peças intercambiáveis.</p>
+                    <div class="game-difficulty">
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot active"></div>
+                    </div>
+                    <button class="play-btn" onclick="loadGame('imagepuzzle')">
+                        <i class="fas fa-play"></i> Jogar
+                    </button>
+                </div>
+
+                <!-- Jogo 17 -->
+                <div class="game-widget" data-category="math">
+                    <div class="game-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3 class="game-title">Conceitos de Medida</h3>
+                    <p class="game-description">Compare tamanhos, pesos e quantidades de objetos.</p>
+                    <div class="game-difficulty">
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot"></div>
+                    </div>
+                    <button class="play-btn" onclick="loadGame('measurement')">
+                        <i class="fas fa-play"></i> Jogar
+                    </button>
+                </div>
+
+                <!-- Jogo 18 -->
+                <div class="game-widget" data-category="memory">
+                    <div class="game-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3 class="game-title">Memória de Sequência</h3>
+                    <p class="game-description">Repita sequências de cores, formas ou símbolos.</p>
+                    <div class="game-difficulty">
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot"></div>
+                    </div>
+                    <button class="play-btn" onclick="loadGame('sequence')">
+                        <i class="fas fa-play"></i> Jogar
+                    </button>
+                </div>
+
+                <!-- Jogo 19 -->
+                <div class="game-widget" data-category="language">
+                    <div class="game-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="game-title">Histórias Sequenciais</h3>
+                    <p class="game-description">Organize imagens para contar uma história em ordem lógica.</p>
+                    <div class="game-difficulty">
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot"></div>
+                    </div>
+                    <button class="play-btn" onclick="loadGame('stories')">
+                        <i class="fas fa-play"></i> Jogar
+                    </button>
+                </div>
+
+                <!-- Jogo 20 -->
+                <div class="game-widget" data-category="sensory">
+                    <div class="game-icon">
+                        <i class="fas fa-eye-dropper"></i>
+                    </div>
+                    <h3 class="game-title">Discriminação de Cores</h3>
+                    <p class="game-description">Identifique tons e matizes de cores semelhantes.</p>
+                    <div class="game-difficulty">
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot active"></div>
+                        <div class="difficulty-dot active"></div>
+                    </div>
+                    <button class="play-btn" onclick="loadGame('colors')">
+                        <i class="fas fa-play"></i> Jogar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Container do Jogo Ativo -->
+            <div class="active-game-container" id="activeGameContainer">
+                <div class="active-game-header">
+                    <button class="back-to-games" onclick="backToGames()">
+                        <i class="fas fa-arrow-left"></i> Voltar
+                    </button>
+                    <h3 id="activeGameTitle">Jogo Ativo</h3>
+                </div>
+                
+                <div class="game-instructions" id="gameInstructions">
+                    Instruções do jogo aparecerão aqui.
+                </div>
+                
+                <div class="game-area" id="gameArea">
+                    <p>Selecione um jogo para começar!</p>
+                </div>
+                
+                <div class="game-stats" id="gameStats"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Sobre o EduÚnica</h3>
+                    <p>Plataforma educacional inclusiva com jogos adaptados para neurodivergentes.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="jogos.html"><i class="fas fa-gamepad"></i> Jogos</a></li>
+                        <li><a href="diario.html"><i class="fas fa-book-open"></i> Diário</a></li>
+                        <li><a href="perfil.html"><i class="fas fa-user"></i> Perfil</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i> contato@eduunica.com</li>
+                        <li><i class="fas fa-phone"></i> (84) 98192-1744</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 EduÚnica - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="jogos.js"></script>
+</body>
+</html>
